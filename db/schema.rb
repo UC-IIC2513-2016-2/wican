@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824011627) do
+ActiveRecord::Schema.define(version: 20160824011826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "initiatives", force: :cascade do |t|
+    t.string   "title",                       null: false
+    t.string   "description",                 null: false
+    t.string   "image"
+    t.boolean  "active",      default: false
+    t.string   "hashtag"
+    t.integer  "ong_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["ong_id"], name: "index_initiatives_on_ong_id", using: :btree
+  end
 
   create_table "ongs", force: :cascade do |t|
     t.string   "name",        null: false
@@ -36,4 +48,5 @@ ActiveRecord::Schema.define(version: 20160824011627) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "initiatives", "ongs"
 end
