@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823234556) do
+ActiveRecord::Schema.define(version: 20160824011627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ongs", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.string   "logo"
+    t.string   "email"
+    t.string   "description", null: false
+    t.string   "webpage"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["name"], name: "index_ongs_on_name", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",      null: false
