@@ -1,0 +1,47 @@
+<%= form_for(initiative) do |f| %>
+  <% if initiative.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(initiative.errors.count, "error") %> prohibited this initiative from being saved:</h2>
+
+      <ul>
+      <% initiative.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.text_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hashtag %>
+    <%= f.text_field :hashtag %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ong_id %>
+    <%= f.text_field :ong_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
