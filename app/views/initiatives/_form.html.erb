@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= f.label :ong_id %>
-    <%= f.text_field :ong_id %>
+    <%= f.collection_select :ong_id, Ong.all, :id, :name, prompt: 'Select ONG' %>
   </div>
 
   <div class="actions">
