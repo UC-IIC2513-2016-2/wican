@@ -22,8 +22,8 @@
         <td><%= ong.email %></td>
         <td><%= ong.description %></td>
         <td><%= ong.webpage %></td>
-        <td><%= link_to 'Show', ong %></td>
-        <td><%= link_to 'Edit', edit_ong_path(ong) %></td>
+        <td><%= link_to 'Show', [:admin, ong] %></td>
+        <td><%= link_to 'Edit', edit_admin_ong_path(ong) %></td>
         <td><%= link_to 'Destroy', ong, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Ong', new_ong_path %>
+<%= link_to 'New Ong', new_admin_ong_path %>

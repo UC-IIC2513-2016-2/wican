@@ -1,4 +1,4 @@
-class OngsController < ApplicationController
+class Admin::OngsController < ApplicationController
   before_action :set_ong, only: [:show, :edit, :update, :destroy]
 
   # GET /ongs
@@ -28,8 +28,8 @@ class OngsController < ApplicationController
 
     respond_to do |format|
       if @ong.save
-        format.html { redirect_to @ong, notice: 'Ong was successfully created.' }
-        format.json { render :show, status: :created, location: @ong }
+        format.html { redirect_to [:admin, @ong], notice: 'Ong was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @ong] }
       else
         format.html { render :new }
         format.json { render json: @ong.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class OngsController < ApplicationController
   def update
     respond_to do |format|
       if @ong.update(ong_params)
-        format.html { redirect_to @ong, notice: 'Ong was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ong }
+        format.html { redirect_to [:admin, @ong], notice: 'Ong was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @ong] }
       else
         format.html { render :edit }
         format.json { render json: @ong.errors, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class OngsController < ApplicationController
   def destroy
     @ong.destroy
     respond_to do |format|
-      format.html { redirect_to ongs_url, notice: 'Ong was successfully destroyed.' }
+      format.html { redirect_to admin_ongs_url, notice: 'Ong was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
