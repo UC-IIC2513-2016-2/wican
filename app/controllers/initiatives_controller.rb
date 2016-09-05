@@ -11,6 +11,7 @@ class InitiativesController < ApplicationController
   # GET /initiatives/1
   # GET /initiatives/1.json
   def show
+    @sign = InitiativeSign.new
   end
 
   # GET /initiatives/new
