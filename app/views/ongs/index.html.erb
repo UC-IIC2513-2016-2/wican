@@ -1,2 +1,12 @@
-<h1>Ongs#index</h1>
-<p>Find me in app/views/ongs/index.html.erb</p>
+<h1>ONGs que usan <strong>wican</strong></h1>
+
+<ul>
+  <% @ongs.each do |ong| %>
+    <li>
+      <%= link_to ong do %>
+        <%= image_tag ong.logo, alt: "Logo de #{ong.name}" %>
+        <span><%= ong.name %></span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

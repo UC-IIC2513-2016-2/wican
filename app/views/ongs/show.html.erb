@@ -1,2 +1,8 @@
-<h1>Ongs#show</h1>
-<p>Find me in app/views/ongs/show.html.erb</p>
+<h1><%= @ong.name %></h1>
+<p><%= @ong.description %></p>
+<h2>Algunas de nuestras iniciativas</h2>
+<ul>
+  <% @ong.some_initiatives.each do |initiative| %>
+    <li><%= link_to initiative.title, initiative %></li>
+  <% end %>
+</ul>
