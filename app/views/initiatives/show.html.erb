@@ -1,34 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @initiative.title %>
-</p>
+<h1><%= @initiative.title %></h1>
 
-<p>
-  <strong>Description:</strong>
+<div class="share">
+  <h2>Difunde</h2>
+  <div class="twitter">
+    Twitea esta iniciativa
+  </div>
+  <div class="facebook">
+    Comparte esta iniciativa
+  </div>
+</div>
+
+<div class="initiative-image">
+  <%= image_tag @initiative.image, alt: 'Imagen de iniciativa' %>
+</div>
+
+<div class="initiative-description">
   <%= @initiative.description %>
-</p>
+</div>
 
-<p>
-  <strong>Image:</strong>
-  <%= @initiative.image %>
-</p>
+<div class="sign-initiative">
+  <h2>Firma de apoyo</h2>
+  Firmar...
+</div>
 
-<p>
-  <strong>Active:</strong>
-  <%= @initiative.active %>
-</p>
-
-<p>
-  <strong>Hashtag:</strong>
-  <%= @initiative.hashtag %>
-</p>
-
-<p>
-  <strong>Ong:</strong>
-  <%= @initiative.ong.name %>
-</p>
-
-<%= link_to 'Edit', edit_initiative_path(@initiative) %> |
-<%= link_to 'Back', initiatives_path %>
+<div class="write-representatives">
+  Escríbele a tus representantes
+</div>

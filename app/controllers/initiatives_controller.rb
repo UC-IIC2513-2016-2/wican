@@ -1,10 +1,11 @@
 class InitiativesController < ApplicationController
+  before_action :set_ong, only: [:index, :show]
   before_action :set_initiative, only: [:show, :edit, :update, :destroy]
 
   # GET /initiatives
   # GET /initiatives.json
   def index
-    @initiatives = Initiative.all
+    @initiatives = @ong.initiatives.active
   end
 
   # GET /initiatives/1
@@ -64,7 +65,11 @@ class InitiativesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_initiative
-      @initiative = Initiative.find(params[:id])
+      @initiative = @ong.initiatives.find(params[:id])
+    end
+
+    def set_ong
+      @ong = Ong.find(params[:ong_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

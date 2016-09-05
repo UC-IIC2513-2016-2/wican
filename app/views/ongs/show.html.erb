@@ -3,6 +3,6 @@
 <h2>Algunas de nuestras iniciativas</h2>
 <ul>
   <% @ong.some_initiatives.each do |initiative| %>
-    <li><%= link_to initiative.title, initiative %></li>
+    <li><%= link_to initiative.title, [@ong, initiative] %></li>
   <% end %>
 </ul>
