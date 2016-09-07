@@ -9,6 +9,24 @@
   </head>
 
   <body>
+    <header>
+      <div id="logo">
+        <%= image_tag 'logo.png' %>
+      </div>
+      <div id="user-bar">
+        <div>Nombre del usuario</div>
+        <div>Usuario</div>
+        <%= link_to 'Salir' %>
+      </div>
+    </header>
     <%= yield %>
+    <footer>
+      <div id="license">
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+      </div>
+      <div id="project">
+        wican 2016
+      </div>
+    </footer>
   </body>
 </html>
