@@ -1,4 +1,6 @@
 class OngsController < ApplicationController
+  layout 'application', only: [:index]
+
   def index
     @ongs = Ong.all
   end

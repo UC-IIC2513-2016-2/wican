@@ -1,4 +1,6 @@
 class InitiativesController < ApplicationController
+  layout 'ongs'
+
   before_action :set_ong, only: [:index, :show]
   before_action :set_initiative, only: [:show, :edit, :update, :destroy]
 
