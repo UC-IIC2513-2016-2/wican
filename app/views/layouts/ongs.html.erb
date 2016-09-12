@@ -1,6 +1,8 @@
 <% if @ong.logo %>
   <% content_for :logo do %>
-    <%= image_tag @ong.logo, alt: "#{@ong.name} Logo" %>
+    <%= link_to @ong do %>
+      <%= image_tag @ong.logo, alt: "#{@ong.name} Logo" %>
+    <% end %>
   <% end %>
 <% end %>
 
