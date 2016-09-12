@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  resource :session, only: [:new, :create, :destroy]
+
   namespace :admin do
     resources :ongs
   end
