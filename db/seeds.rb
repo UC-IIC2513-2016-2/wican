@@ -15,6 +15,9 @@
   )
 end
 
+# al primer usuario le cambiaremos la password a "123456" para tener una cuenta fácil de usar
+User.first.update(password: '123456')
+
 10.times do
   ong = Ong.create(
     name: Faker::Company.name,
