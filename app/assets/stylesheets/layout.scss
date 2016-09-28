@@ -32,29 +32,56 @@ nav#main-menu, #logo {
 nav#main-menu {
   margin-left: 10px;
   a {
+    display: inline-block;
+    position: relative;
     padding: 20px;
     text-decoration: none;
     color: #555;
     font-size: 18px;
-    border-right: 1px solid #aaa;
-  }
-  a:nth-child(5n+1) {
-    color: #47737D;
-  }
-  a:nth-child(5n+2) {
-    color: #FEC733;
-  }
-  a:nth-child(5n+3) {
-    color: #40A4A3;
-  }
-  a:nth-child(5n+4) {
-    color: #E87134;
-  }
-  a:nth-child(5n+5) {
-    color: #B3B22F;
-  }
-  a:last-child {
-    border: none;
+    transition: all 0.4s;
+    &::after {
+      position: absolute;
+      top: 0;
+      right: -3px;
+      content: "";
+      display: block;
+      width: 0;
+      height: 100%;
+      border-right: 1px solid #aaa;
+    }
+    &:nth-child(5n+1) {
+      color: #47737D;
+      &:hover {
+        background: lighten(#47737D, 50%);
+      }
+    }
+    &:nth-child(5n+2) {
+      color: #FEC733;
+      &:hover {
+        background: lighten(#FEC733, 35%);
+      }
+    }
+    &:nth-child(5n+3) {
+      color: #40A4A3;
+      &:hover {
+        background: lighten(#40A4A3, 50%);
+      }
+    }
+    &:nth-child(5n+4) {
+      color: #E87134;
+      &:hover {
+        background: lighten(#E87134, 50%);
+      }
+    }
+    &:nth-child(5n+5) {
+      color: #B3B22F;
+      &:hover {
+        background: lighten(#B3B22F, 50%);
+      }
+    }
+    &:last-child::after {
+      display: none;
+    }
   }
 }
 
