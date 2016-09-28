@@ -2,19 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1 {
-  text-align: center;
-}
+body.home {
+  h1 {
+    text-align: center;
+  }
 
-p {
-  text-align: center;
-}
+  p {
+    text-align: center;
+  }
 
-div.logo-big {
-  text-align: center;
-}
+  div.logo-big {
+    text-align: center;
+  }
 
-p.sub-header {
-  width: 600px;
-  margin: 10px auto;
+  p.sub-header {
+    width: 600px;
+    margin: 10px auto;
+  }
 }
