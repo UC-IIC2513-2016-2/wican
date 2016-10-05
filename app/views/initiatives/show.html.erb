@@ -22,6 +22,6 @@
 
 <%= render 'initiative_sign' %>
 
-<div class="write-representatives">
+<%= link_to new_initiative_representatives_email_path(@initiative), class: 'write-representatives' do %>
   Escríbele a tus representantes
-</div>
+<% end %>

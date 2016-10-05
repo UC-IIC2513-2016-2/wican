@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :initiatives, only: [] do
     resources :initiative_signs, only: [:create]
+    resource :representatives_email, only: [:new, :create]
   end
 
   resources :users

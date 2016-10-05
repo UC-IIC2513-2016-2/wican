@@ -1,0 +1,47 @@
+<h1><%= @initiative.title %></h1>
+<h2>Escríbele a tus representates sobre esta iniciativa</h2>
+
+<div>
+  <%= form_tag nil, method: 'get' do %>
+    Filtrar por comuna:
+    <%= select_tag :municipality_id, options_from_collection_for_select(Municipality.all, :id, :name, params[:municipality_id]), include_blank: true %>
+    <%= submit_tag 'Filtrar' %>
+  <% end %>
+</div>
+
+<%= form_for :representatives_email, url: initiative_representatives_email_path(@initiative) do |f| %>
+  <h3>Selecciona los senadores y diputados a los que les quieres escribir</h3>
+  <div class="select-senators">
+    <label for="senators">Senadores</label>
+    <div class="checkboxes">
+      <%= f.collection_check_boxes :senators_ids, @senators, :id, :name, include_hidden: false do |b| %>
+        <%= b.check_box %>
+        <%= b.label do |l| %>
+          <%= image_tag b.object.photo %>
+          <%= b.object.name %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="select-deputies">
+    <label for="deputies">Diputados</label>
+    <div class="checkboxes">
+      <%= f.collection_check_boxes :deputies_ids, @deputies, :id, :name, include_hidden: false do |b| %>
+        <%= b.check_box %>
+        <%= b.label do |l| %>
+          <%= image_tag b.object.photo %>
+          <span><%= b.object.name %></span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <p>
+    Escribe tu mensaje
+  </p>
+  <div class="field">
+    <%= f.text_area :message %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Enviar e-mail' %>
+  </div>
+<% end %>

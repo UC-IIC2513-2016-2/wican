@@ -1,0 +1,45 @@
+// Place all the styles related to the RepresentativesEmails controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.select-senators, .select-deputies {
+  .checkboxes {
+    input {
+      display: none;
+    }
+    label {
+      display: inline-block;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 7px;
+      max-width: 200px;
+      vertical-align: middle;
+      cursor: pointer;
+      transition: all 0.4s;
+      -webkit-user-select: none;  /* Chrome all / Safari all */
+      -moz-user-select: none;     /* Firefox all */
+      -ms-user-select: none;      /* IE 10+ */
+      user-select: none;
+      &:hover {
+        border-color: #333;
+        box-shadow: 3px 3px 15px -3px #333;
+        transform: translate(-3px, -3px);
+      }
+      &:active {
+        transition: none;
+        transform: translate(0, 0) scale(0.98);
+        box-shadow: none;
+      }
+      img {
+        float: left;
+        margin-right: 5px;
+        height: 70px;
+      }
+    }
+    input:checked + label {
+      background: #fff8e5;
+      border-color: #333;
+    }
+  }
+}

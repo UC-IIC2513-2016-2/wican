@@ -1,0 +1,15 @@
+<p>
+  Estimado(a) <%= @representative.name %>,
+</p>
+
+<p>
+  Respecto a la iniciativa titulada "<%= link_to @initiative.title, ong_initiative_url(@initiative.ong, @initiative) %>":
+</p>
+
+<p>
+  <%= @message %>
+</p>
+<p>
+  Saluda atentamente,<br/>
+  <%= @user.full_name %>
+</p>
