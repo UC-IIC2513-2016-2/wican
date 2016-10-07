@@ -36,3 +36,33 @@ User.first.update(password: '123456')
     )
   end
 end
+
+circumscription = Circumscription.create(number: 8, name: 'Santiago Oriente')
+districts = [{ number: 21 }, { number: 25 }].map do |district_data|
+  District.create(district_data.merge({ circumscription: circumscription }))
+end
+
+[{ name: 'Ñuñoa' }, { name: 'Providencia' }].each do |municipality_data|
+  Municipality.create(municipality_data.merge({ district: districts[0] }))
+end
+
+[{ name: 'La Granja' }, { name: 'Macul' }, { name: 'San Joaquín' }].each do |municipality_data|
+  Municipality.create(municipality_data.merge({ district: districts[1] }))
+end
+
+ps = Party.create(name: 'Partido Socialista', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Emblem_of_the_Socialist_Party_of_Chile.svg/500px-Emblem_of_the_Socialist_Party_of_Chile.svg.png')
+rn = Party.create(name: 'Renovación Nacional', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Renovacion_Nacional_2014.svg/512px-Renovacion_Nacional_2014.svg.png')
+pdc = Party.create(name: 'Partido Demócrata Cristiano', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Emblem_of_the_Christian_Democrat_Party_of_Chile.svg/442px-Emblem_of_the_Christian_Democrat_Party_of_Chile.svg.png')
+ppd = Party.create(name: 'Partido por la Democracia', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Partido_por_la_Democracia_emblema.png')
+
+[
+  { name: 'Carlos Montes Cisternas', email: 'cmontes@example.org', photo: 'http://www.senado.cl/appsenado/index.php?mo=comisiones&ac=getImage&fid=1119', party: ps, circumscription: circumscription },
+  { name: 'Manuel José Ossandón Irarrázabal', email: 'mjossandon@example.org', photo: 'http://www.senado.cl/appsenado/index.php?mo=comisiones&ac=getImage&fid=1120', party: rn, circumscription: circumscription }
+].each { |senator_data| Senator.create(senator_data) }
+
+[
+  { name: 'Maya Fernández Allende', email: 'maya.fernandez@example.org', photo: 'https://www.camara.cl/img.aspx?prmid=chs981', party: ps, district: districts[0] },
+  { name: 'Marcela Sabat Fernández', email: 'msabat@example.org', photo: 'https://www.camara.cl/img.aspx?prmid=chs949', party: rn, district: districts[0] },
+  { name: 'Claudio Arriagada Macaya', email: 'claudio.arriagada@example.org', photo: 'https://www.camara.cl/img.aspx?prmid=chs969', party: pdc, district: districts[1] },
+  { name: 'Ramón Farías Ponce', email: 'rfarias@example.org', photo: 'https://www.camara.cl/img.aspx?prmid=chs839', party: ppd, district: districts[1] }
+].each { |deputy_data| Deputy.create(deputy_data) }
