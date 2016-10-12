@@ -18,7 +18,8 @@
 
   <div class="field">
     <%= f.label :logo %>
-    <%= f.text_field :logo %>
+    <%= f.hidden_field :logo, value: f.object.cached_logo_data %>
+    <%= f.file_field :logo %>
   </div>
 
   <div class="field">
