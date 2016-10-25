@@ -22,7 +22,6 @@ User.first.update(password: '123456')
   ong = Ong.create(
     name: Faker::Company.name,
     email: Faker::Internet.email,
-    logo: Faker::Company.logo,
     description: Faker::Lorem.sentences(2).join(' '),
     webpage: Faker::Internet.url
   )
