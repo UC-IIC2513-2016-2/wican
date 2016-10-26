@@ -1,3 +1,26 @@
 // Place all the styles related to the Initiatives controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#initiative-sign {
+  .signs-count {
+    color: #47737D;
+    border: 1px solid #47737D;
+    background: #d9e7ea;
+    padding: 20px;
+  }
+  .form-description {
+    font-size: 20px;
+    margin-top: 0;
+  }
+
+  .field label {
+    width: 100px;
+  }
+
+  .actions {
+    margin-left: 120px;
+  }
+}

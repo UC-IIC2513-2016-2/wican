@@ -4,7 +4,7 @@ class InitiativeSign < ApplicationRecord
 
   validates :name, presence: true, unless: :user_set?
   validates :email, presence: true, unless: :user_set?
-  validates :user_id, uniqueness: { scope: :initiative_id }
+  validates :user_id, uniqueness: { scope: :initiative_id }, allow_blank: true
 
   validates_each :user_id do |record, attr, value|
     unless (record.name && record.email) || record.user_id

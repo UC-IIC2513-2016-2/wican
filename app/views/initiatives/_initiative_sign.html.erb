@@ -1,7 +1,11 @@
 <div id="initiative-sign">
   <h2>Firma de apoyo</h2>
-  <p>
-    <%= @initiative.signs.count %> personas ya han apoyado esta iniciativa. ¡Súmate!
+  <p class="signs-count">
+    <% if @initiative.signs.count > 0 %>
+      <%= @initiative.signs.count %> personas ya han apoyado esta iniciativa. ¡Súmate!
+    <% else %>
+      No tenemos firmas aún. ¿Quieres ser el primero?
+    <% end %>
   </p>
   <div>
     <%= form_for [@initiative, @sign] do |f| %>
@@ -15,22 +19,25 @@
           </ul>
         </div>
       <% end %>
-      <div>
-        <%= f.label :user_id, 'Selecciona usuario' %>
-        <%= f.collection_select :user_id, User.all, :id, :full_name, include_blank: true %>
-      </div>
-      <div>
-        o ingresa tus datos
-      </div>
-      <div>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-      </div>
-      <div>
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-      </div>
-      <div>
+      <% if current_user %>
+        <p class="form-description">
+          Estás firmando como <%= current_user.full_name %>.
+          Puedes <%= link_to 'salir', session_path, method: :delete %> e iniciar sesión nuevamente si no corresponde.
+        </p>
+      <% else %>
+        <p class="form-description">
+          Ingresa tus datos o <%= link_to 'inicia sesión', new_session_path %>
+        </p>
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+        </div>
+      <% end %>
+      <div class="actions">
         <%= f.submit 'Firmar' %>
       </div>
     <% end %>
