@@ -12,6 +12,10 @@ class InitiativeSign < ApplicationRecord
     end
   end
 
+  def signer_name
+    self.user_id ? self.user.first_name : self.name
+  end
+
   private
 
   def user_set?

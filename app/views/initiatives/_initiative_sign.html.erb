@@ -1,45 +1,49 @@
 <div id="initiative-sign">
   <h2>Firma de apoyo</h2>
-  <p class="signs-count">
-    <% if @initiative.signs.count > 0 %>
-      <%= @initiative.signs.count %> personas ya han apoyado esta iniciativa. ¡Súmate!
-    <% else %>
-      No tenemos firmas aún. ¿Quieres ser el primero?
-    <% end %>
-  </p>
-  <div>
-    <%= form_for [@initiative, @sign] do |f| %>
-      <% if @sign.errors.any? %>
-        <div id="error_explanation">
-          <h2>Errores</h2>
-          <ul>
-          <% @sign.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <% if current_user %>
-        <p class="form-description">
-          Estás firmando como <%= current_user.full_name %>.
-          Puedes <%= link_to 'salir', session_path, method: :delete %> e iniciar sesión nuevamente si no corresponde.
-        </p>
+  <% if @sign_saved %>
+    <p class="signs-count">Gracias, <%= @sign.signer_name %>. Ahora somos <%= @initiative.signs.count %> los adherentes.</p>
+  <% else %>
+    <p class="signs-count">
+      <% if @initiative.signs.count > 0 %>
+        <%= @initiative.signs.count %> personas ya han apoyado esta iniciativa. ¡Súmate!
       <% else %>
-        <p class="form-description">
-          Ingresa tus datos o <%= link_to 'inicia sesión', new_session_path %>
-        </p>
-        <div class="field">
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-        </div>
-        <div class="field">
-          <%= f.label :email %>
-          <%= f.text_field :email %>
+        No tenemos firmas aún. ¿Quieres ser el primero?
+      <% end %>
+    </p>
+    <div>
+      <%= form_for [@initiative, @sign], remote: true, data: { type: :html } do |f| %>
+        <% if @sign.errors.any? %>
+          <div id="error_explanation">
+            <h2>Errores</h2>
+            <ul>
+            <% @sign.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <% if current_user %>
+          <p class="form-description">
+            Estás firmando como <%= current_user.full_name %>.
+            Puedes <%= link_to 'salir', session_path, method: :delete %> e iniciar sesión nuevamente si no corresponde.
+          </p>
+        <% else %>
+          <p class="form-description">
+            Ingresa tus datos o <%= link_to 'inicia sesión', new_session_path %>
+          </p>
+          <div class="field">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+          </div>
+        <% end %>
+        <div class="actions">
+          <%= f.submit 'Firmar' %>
         </div>
       <% end %>
-      <div class="actions">
-        <%= f.submit 'Firmar' %>
-      </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
