@@ -1,4 +1,4 @@
-$(function () {
+$(document).on('turbolinks:load', function () {
   var validations = {
     required: {
       validator: function(value) {
