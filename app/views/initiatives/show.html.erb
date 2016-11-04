@@ -18,7 +18,9 @@
   <%= @initiative.description %>
 </div>
 
-<%= render 'initiatives/initiative_sign' %>
+<div id="initiative-sign-container" data-update-counter-url="<%= count_initiative_initiative_signs_path(@initiative) %>">
+  <%= render 'initiatives/initiative_sign' %>
+</div>
 
 <%= link_to new_initiative_representatives_email_path(@initiative), class: 'write-representatives' do %>
   Escríbele a tus representantes

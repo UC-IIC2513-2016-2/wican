@@ -1,6 +1,7 @@
 class InitiativeSignsController < ApplicationController
+  before_action :set_initiative
+
   def create
-    @initiative = Initiative.find(params[:initiative_id])
     @ong = @initiative.ong
     sign_params = params.require(:initiative_sign).permit(:user_id, :name, :email)
     sign_params[:initiative_id] = @initiative.id
@@ -28,6 +29,20 @@ class InitiativeSignsController < ApplicationController
       # requests pidiendo respuesta JavaScript (caso default de Ajax en Rails)
       format.js { }
     end
+  end
+
+  def count
+    respond_to do |format|
+      format.json {
+        render json: { count: @initiative.signs.count }
+      }
+    end
+  end
+
+  private
+
+  def set_initiative
+    @initiative = Initiative.find(params[:initiative_id])
   end
 
 end

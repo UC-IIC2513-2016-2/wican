@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :initiatives, only: [] do
-    resources :initiative_signs, only: [:create]
+    resources :initiative_signs, only: [:create] do
+      get 'count', on: :collection
+    end
     resource :representatives_email, only: [:new, :create]
   end
 

@@ -1,11 +1,14 @@
 <div id="initiative-sign">
   <h2>Firma de apoyo</h2>
   <% if @sign_saved %>
-    <p class="signs-count">Gracias, <%= @sign.signer_name %>. Ahora somos <%= @initiative.signs.count %> los adherentes.</p>
+    <p class="signs-count">
+      Gracias, <%= @sign.signer_name %>.
+      Ahora somos <span class="count-number"><%= @initiative.signs.count %></span> los adherentes.
+    </p>
   <% else %>
     <p class="signs-count">
       <% if @initiative.signs.count > 0 %>
-        <%= @initiative.signs.count %> personas ya han apoyado esta iniciativa. ¡Súmate!
+        <span class="count-number"><%= @initiative.signs.count %></span> personas ya han apoyado esta iniciativa. ¡Súmate!
       <% else %>
         No tenemos firmas aún. ¿Quieres ser el primero?
       <% end %>
