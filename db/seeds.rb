@@ -16,7 +16,9 @@
 end
 
 # al primer usuario le cambiaremos la password a "123456" para tener una cuenta fácil de usar
-User.first.update(password: '123456')
+u = User.first
+u.update(password: '123456')
+u.generate_token_and_save
 
 10.times do
   ong = Ong.create(

@@ -1,6 +1,8 @@
 module Api::V1
   class OngsController < ApiController
 
+    before_action :authenticate, except: [:index]
+
     def index
       render json: Ong.all, include: [:initiatives]
     end
