@@ -6,3 +6,12 @@
     <li><%= link_to initiative.title, [@ong, initiative] %></li>
   <% end %>
 </ul>
+
+<% if @other_petitions %>
+  <h2>Iniciativas en Change.org</h2>
+  <ul>
+    <% @other_petitions.each do |petition| %>
+      <li><%= link_to petition['title'], petition['url'] %></li>
+    <% end %>
+  </ul>
+<% end %>

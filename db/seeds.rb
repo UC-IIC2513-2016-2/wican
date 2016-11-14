@@ -38,6 +38,8 @@ u.generate_token_and_save
   end
 end
 
+Ong.first.update_attribute(:change_org_id, 1197750)
+
 circumscription = Circumscription.create(number: 8, name: 'Santiago Oriente')
 districts = [{ number: 21 }, { number: 25 }].map do |district_data|
   District.create(district_data.merge({ circumscription: circumscription }))
