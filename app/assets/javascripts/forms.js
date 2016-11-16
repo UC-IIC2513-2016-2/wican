@@ -55,10 +55,10 @@ $(document).on('turbolinks:load', function () {
     }
     for (var validationName in inputValidations) {
       if (!runValidation($field, validationName, inputValidations[validationName])) {
-        formHasErrors = true;
-        break;
+        return false;
       }
     }
+    return true;
   }
 
   function getFields($form) {
